@@ -66,7 +66,7 @@ TS file includes:
 - templateUrl: an HTML template that defines the structure of the component (it can include bindings, directives, and other components).
 - styleUrls:  CSS styles that apply to the component.
 - class: a TypeScript class that defines the behavior of the component. It can include properties, methods, and lifecycle hooks.
-
+```
     import { Component } from '@angular/core';
 
     @Component({
@@ -77,7 +77,7 @@ TS file includes:
     export class NewComponentComponent {
       //
     }
-
+```
 # Types of Interpolation
 
 Basically there is only one type of interpolation in Angluar - called "string interpolation", but it has different usages and slightly different syntax:
@@ -101,29 +101,24 @@ Structural directives are a type of directive in Angular that allow you to modif
 There are three built-in structural directives in Angular:
 
 1. *ngIf - used to conditionally render elements based on a boolean expression. 
-
-$$
+```
   <div *ngIf="showElement">This element is only displayed if showElement is true.</div>
-$$
-
+```
 2. *ngFor - used to generate a list of elements based on an array or iterable object. 
-
-$$
+```
   <ul>
     <li *ngFor="let item of results">{{item}}</li>
   </ul>
-$$
-
+```
 3. *ngSwitch -  used to conditionally render elements based on a set of cases. It's similar to a switch statement in JavaScript.
 
-$$
+```
   <div [ngSwitch]="color">
     <div *ngSwitchCase="'red'">This element is displayed if color is 'red'.</div>
     <div *ngSwitchCase="'blue'">This element is displayed if color is 'blue'.</div>
     <div *ngSwitchDefault>This element is displayed if color is not 'red' or 'blue'.</div>
   </div>
-$$
-
+```
 NB: you can also define classNames/idNames when needed by using . or # tags before initializing. Example: 
 
      <input type="search"  #txtInput (input)="searchWord = txtInput.value"/>
