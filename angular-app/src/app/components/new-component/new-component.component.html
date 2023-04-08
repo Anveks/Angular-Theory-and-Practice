@@ -3,18 +3,18 @@
   <h2>{{searchTitle}}</h2>
 
   <div>
-   <input type="search" />
+   <input type="search"  #txtInput (input)="searchWord = txtInput.value"/>
    <button
     [disabled]="searchWord.length === 0"
     (click)="search()"
    >Search</button>
-   <span>Loading ⌛</span>
+   <span [hidden]="!isBusy">Loading ⌛</span>
   </div>
 
   <div>
     <h3>Result:</h3>
     <ul>
-      <li></li>
+      <li *ngFor="let item of results">{{item}}</li>
     </ul>
   </div>
 
