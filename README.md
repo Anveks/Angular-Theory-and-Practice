@@ -102,21 +102,27 @@ There are three built-in structural directives in Angular:
 
 1. *ngIf - used to conditionally render elements based on a boolean expression. 
 
+$$
   <div *ngIf="showElement">This element is only displayed if showElement is true.</div>
+$$
 
 2. *ngFor - used to generate a list of elements based on an array or iterable object. 
 
+$$
   <ul>
     <li *ngFor="let item of results">{{item}}</li>
   </ul>
+$$
 
 3. *ngSwitch -  used to conditionally render elements based on a set of cases. It's similar to a switch statement in JavaScript.
 
+$$
   <div [ngSwitch]="color">
     <div *ngSwitchCase="'red'">This element is displayed if color is 'red'.</div>
     <div *ngSwitchCase="'blue'">This element is displayed if color is 'blue'.</div>
     <div *ngSwitchDefault>This element is displayed if color is not 'red' or 'blue'.</div>
   </div>
+$$
 
 NB: you can also define classNames/idNames when needed by using . or # tags before initializing. Example: 
 
