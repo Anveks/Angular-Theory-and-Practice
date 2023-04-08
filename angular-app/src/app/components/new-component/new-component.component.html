@@ -1,1 +1,23 @@
-<p>new-component works!</p>
+<div>
+
+  <h2>{{searchTitle}}</h2>
+
+  <div>
+   <input type="search" />
+   <button
+    [disabled]="searchWord.length === 0"
+    (click)="search()"
+   >Search</button>
+   <span>Loading ⌛</span>
+  </div>
+
+  <div>
+    <h3>Result:</h3>
+    <ul>
+      <li></li>
+    </ul>
+  </div>
+
+</div>
+
+

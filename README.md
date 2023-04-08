@@ -33,21 +33,21 @@ A module is basically a container for a group of components, services, directive
 3. Providers: These are the services that are available to the components within the module.
 4. Bootstrap: This is the root component of the module that is bootstrapped when the application starts.
 
-                              @NgModule({
-                            declarations: [
-                              AppComponent,
-                              MyComponent
-                            ],
-                            imports: [
-                              BrowserModule
-                            ],
-                            providers: [
-                              MyService
-                            ],
-                            bootstrap: [
-                              AppComponent
-                            ]
-                          })
+    @NgModule({
+      declarations: [
+        AppComponent,
+        MyComponent
+      ],
+      imports: [
+        BrowserModule
+      ],
+      providers: [
+        MyService
+      ],
+      bootstrap: [
+        AppComponent
+      ]
+    })
 
 # Components
 
@@ -77,3 +77,29 @@ TS file includes:
     export class NewComponentComponent {
 
     }
+
+# Types of Interpolation
+
+Basically there is only one type of interpolation in Angluar - called "string interpolation", but it has different usages and slightly different syntax:
+
+{{}} - Tag Content:
+
+      <h2>{{searchTitle}}</h2>
+
+[] - Attribute Value Interpolation:
+
+    <button [disabled]="searchWord.length === 0">Search</button>
+
+() - Event Interpolation:
+
+    <button (click)="search()">Search</button>
+
+# Structural Directives in Angular
+
+Structural directives are a type of directive in Angular that allow you to modify the structure of the DOM based on certain conditions. They are called "structural" because they change the structure of the HTML element they are attached to, rather than just modifying its appearance or behavior.
+
+There are three built-in structural directives in Angular:
+
+1. *ngIf - used to conditionally render elements based on a boolean expression. 
+2. *ngFor - used to generate a list of elements based on an array or iterable object. 
+3. *ngSwitch -  used to conditionally render elements based on a set of cases. It's similar to a switch statement in JavaScript.
