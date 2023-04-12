@@ -3,19 +3,21 @@
   <h2>{{searchTitle}}</h2>
 
   <div>
-   <input type="search"  #txtInput (input)="searchWord = txtInput.value"/>
-   <button
+   <input type="search"  #txtInput (input)="searchWord = txtInput.value" (blur)="search()"/>
+   <!-- <button
     [disabled]="searchWord.length === 0"
     (click)="search()"
-   >Search</button>
+   >Search</button> -->
    <span [hidden]="!isBusy">Loading ⌛</span>
   </div>
 
   <div>
-    <h3>Result:</h3>
-    <ul>
-      <li *ngFor="let item of results">{{item}}</li>
-    </ul>
+    <h3>Results:</h3>
+    <app-result [list]="results" (itemSelected)="setSelectedFromResult($event)"></app-result>
+  </div>
+
+  <div>
+    Selected item: {{selectedItem}}
   </div>
 
 </div>

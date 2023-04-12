@@ -124,3 +124,25 @@ NB: you can also define classNames/idNames when needed by using . or # tags befo
      <input type="search"  #txtInput (input)="searchWord = txtInput.value"/>
 
 Here the id of this input tag is "txtInput", which is needed in the following (input) event, where we state that the searchWord variable will be set as textInput's value.
+
+# Decorators
+
+In Angular, a decorator is a special kind of declaration that can be attached to a class declaration, method, property, or parameter. Decorators are used to annotate classes and their members with additional metadata, which can then be used by Angular to perform various tasks such as registering the class as a component or injecting dependencies into it.
+
+Decorators are functions that are prefixed with the @ symbol and are executed at runtime when the code is loaded. They can accept arguments, which can be used to configure their behavior.
+
+Angular provides several built-in decorators that can be used to annotate classes and their members, such as:
+
+- @Component: Used to annotate a class as an Angular component.
+- @Directive: Used to annotate a class as an Angular directive.
+- @Pipe: Used to annotate a class as an Angular pipe.
+- @Injectable: Used to annotate a class as an Angular service.
+- @Input: Used to create an input property on a component. Input properties allow values to be passed into a component from its parent component. 
+- @Output: Used to create an output property on a component. Output properties allow components to emit events to its parent component. 
+
+NB: Most of the time the type of @Output() decorator will be EventEmitter - a built-in class in JavaScript that allows to create and emit custom events. It is also part of the Node.js core libraries and can be used in both server-side and client-side JavaScript applications.
+
+The EventEmitter class provides two main functionalities:
+
+1. Registering event listeners: Developers can use the on() method to register a listener for a particular event. Whenever the event is emitted, the registered listener function will be called.
+2. Emitting events: Developers can use the emit() method to emit an event. This will trigger all the registered listeners for that event to be called.
