@@ -1,3 +1,15 @@
-<h1>This is my App</h1>
+<h1>Gallery App</h1>
 
-<search-component></search-component>
+<!-- <search-component></search-component> -->
+<!-- <app-gallery></app-gallery> -->
+
+<input type="button" value="start" (click)="changePic()"/>
+<input type="button" value="stop" (click)="stopChangePic()"/>
+
+<div class="container">
+  <div *ngFor="let i of arr">
+    <app-gallery-images path="{{'../../../assets/images/' + i.path}}" (click)="selectedPic(i.path)"></app-gallery-images>
+  </div>
+</div>
+
+<app-gallery path="{{'../../../assets/images/' + selectedPath}}"></app-gallery>

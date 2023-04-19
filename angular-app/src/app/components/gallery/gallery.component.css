@@ -1,0 +1,33 @@
+.img-container {
+  width: 400px;
+  border-radius: 10px;
+}
+
+.img-container img {
+  width: 620px;
+  border-radius: 10px;
+}
+
+.img-preview {
+  display: flex;
+  flex-direction: row;
+  gap: 1px;
+}
+
+.img-preview img {
+  width: 200px;
+  height: 130px;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.active img {
+  border-radius: 10px;
+  border: 5px solid gold;
+  opacity: 1;
+}
+
+img{
+  width: 300px;
+  height: 400px;
+}

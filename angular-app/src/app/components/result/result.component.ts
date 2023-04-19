@@ -6,6 +6,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./result.component.css']
 })
 export class ResultComponent implements OnInit {
+
+  selectedItem = "";
+
   @Input() list: string[] = []
   @Output() itemSelected = new EventEmitter<string>();
 
@@ -18,6 +21,7 @@ export class ResultComponent implements OnInit {
 
   setSelectedItem(item: string){
     console.log('Item selected: ', item);
+    this.selectedItem = item;
     this.itemSelected.emit(item);
   }
 }

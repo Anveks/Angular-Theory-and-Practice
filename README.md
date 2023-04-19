@@ -1,3 +1,7 @@
+# Angular
+
+Angular is a TypeScript-based framework for developing dynamic, single-page web applications. Originally made by Microsoft programmers, Angular 1.0 was launched in 2010. Back then it was based on MVC design-pattern and used CDN as package manager. Some years later it was updated to Angular 2.0 and introduced component-based approach along with NPM.
+
 # Installing Angular
 
 If you dont have Angular on your PC, open the Command Terminal and install Angular CLI (Command Line Interface):
