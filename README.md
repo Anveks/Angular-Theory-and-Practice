@@ -106,7 +106,9 @@ Basically there is only one type of interpolation in Angluar - called "string in
 
     <input [(ngModel)]="name">
 
-# Structural Directives in Angular
+# Angular Directives: Structural Directives
+
+Angular directives are markers on a DOM element that tell AngularJS to attach a specified behavior or to transform the element and its children. Directives are used to create reusable components, extend HTML with new functionality, and provide an interface for communication between components and the application.
 
 Structural directives are a type of directive in Angular that allow you to modify the structure of the DOM based on certain conditions. They are called "structural" because they change the structure of the HTML element they are attached to, rather than just modifying its appearance or behavior.
 
@@ -137,6 +139,16 @@ NB: you can also define classNames/idNames when needed by using . or # tags befo
 
 Here the id of this input tag is "txtInput", which is needed in the following (input) event, where we state that the searchWord variable will be set as textInput's value.
 
+# Attribute Directives
+
+Built-in attributes used to dynamically change styling of the components, for example:
+
+- *ngStyle
+
+```
+  <span [ngStyle]="style">Our specials: </span>
+```
+Attribute directive will check the value stored in class property named 'style' and will apply it to the code.
 # Decorators
 
 In Angular, a decorator is a special kind of declaration that can be attached to a class declaration, method, property, or parameter. Decorators are used to annotate classes and their members with additional metadata, which can then be used by Angular to perform various tasks such as registering the class as a component or injecting dependencies into it.
@@ -163,10 +175,10 @@ The EventEmitter class provides two main functionalities:
 
 If we define a class property like that:
 
-  public text: string;
+    public text: string;
 
 We'll get TypeScript error. Solution is simple - initialize the property right away:
 
-  public text: string = "";
+    public text: string = "";
 
 OR: go to tsconfig.json file and change strictNullChecks: false (you can find it in CompilerOptions).

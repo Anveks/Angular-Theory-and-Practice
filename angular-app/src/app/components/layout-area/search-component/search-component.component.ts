@@ -8,7 +8,10 @@ import { Component } from '@angular/core';
 export class SearchComponentComponent {
   public tooltip = Math.random() < 0.5 ? "Type something?" : "Look up something..."
 
+  public textToSearch: string = "";
+
   search(): void {
-    alert("Searching...")
+    alert(this.textToSearch);
+    this.textToSearch = 'test test'
   }
 }

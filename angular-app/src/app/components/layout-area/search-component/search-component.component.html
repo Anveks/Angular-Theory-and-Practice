@@ -1,6 +1,6 @@
 <div class="box">
   <label for="search" [title]="tooltip">Type to search: </label>
-  <input type="search">
+  <input type="search" [(ngModel)]="textToSearch">
   <button (click)="search()">🔍</button>
-  <span></span>
+  <span> {{textToSearch}}</span>
 </div>

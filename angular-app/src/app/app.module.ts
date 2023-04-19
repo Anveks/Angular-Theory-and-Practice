@@ -13,6 +13,8 @@ import { FooterComponent } from './components/layout-area/footer/footer.componen
 import { MenuComponent } from './components/layout-area/menu/menu.component';
 import { HomeComponent } from './components/layout-area/home/home.component';
 import { SearchComponentComponent } from './components/layout-area/search-component/search-component.component';
+import { FormsModule } from '@angular/forms';
+import { SpecialsComponent } from './components/products-area/specials/specials.component';
 
 @NgModule({
   declarations: [
@@ -26,11 +28,13 @@ import { SearchComponentComponent } from './components/layout-area/search-compon
     FooterComponent,
     MenuComponent,
     HomeComponent,
-    SearchComponentComponent
+    SearchComponentComponent,
+    SpecialsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     //
