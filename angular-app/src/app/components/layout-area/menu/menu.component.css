@@ -1,0 +1,17 @@
+div{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+a{
+  text-decoration: none;
+  color: orangered;
+}
+
+a:hover{
+  color: orange;
+}

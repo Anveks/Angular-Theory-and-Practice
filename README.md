@@ -35,7 +35,7 @@ A module is basically a container for a group of components, services, directive
 1. Declarations: These are the components, directives, and pipes that belong to the module.
 2. Imports: These are other modules that this module depends on. Any exported components, directives, or pipes from imported modules can be used within this module.
 3. Providers: These are the services that are available to the components within the module.
-4. Bootstrap: This is the root component of the module that is bootstrapped when the application starts.
+4. Bootstrap: This is the root component of the module that is bootstrapped when the application starts = meaning it will be the first component to run.
 
     @NgModule({
       declarations: [
@@ -53,11 +53,15 @@ A module is basically a container for a group of components, services, directive
       ]
     })
 
+NB: Each new component added to the app's html file automatically gets added to the module file.
+
 # Components
 
 An Angular component is a building block of an Angular application that controls a part of the user interface. To create a new component, open the terminal and type:
 
     ng g c folder-name/component-name
+
+NB: In case you don't want test-file in your new component, just add: --skip-tests after the command.
 
 Each component consists of:
 
@@ -90,13 +94,17 @@ Basically there is only one type of interpolation in Angluar - called "string in
 
       <h2>{{searchTitle}}</h2>
 
-[] - Attribute Value Interpolation:
+[] - Attribute Value Interpolation (= Property Binding, binds html attributes and values of elements of a specified class):
 
     <button [disabled]="searchWord.length === 0">Search</button>
 
-() - Event Interpolation:
+() - Event Interpolation(= Event Binding):
 
     <button (click)="search()">Search</button>
+
+[()] - Two-way Binding, "Banana in a box" (is used to bind a form input element (such as a text input or a select box) to a property in the component class, so that changes made in the UI are reflected in the component, and changes made in the component are reflected in the UI.):
+
+    <input [(ngModel)]="name">
 
 # Structural Directives in Angular
 
@@ -150,3 +158,15 @@ The EventEmitter class provides two main functionalities:
 
 1. Registering event listeners: Developers can use the on() method to register a listener for a particular event. Whenever the event is emitted, the registered listener function will be called.
 2. Emitting events: Developers can use the emit() method to emit an event. This will trigger all the registered listeners for that event to be called.
+
+# Some TypeScript Notes:
+
+If we define a class property like that:
+
+  public text: string;
+
+We'll get TypeScript error. Solution is simple - initialize the property right away:
+
+  public text: string = "";
+
+OR: go to tsconfig.json file and change strictNullChecks: false (you can find it in CompilerOptions).

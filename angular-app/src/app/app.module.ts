@@ -7,6 +7,12 @@ import { SearchComponent } from './components/new-component/new-component.compon
 import { ResultComponent } from './components/result/result.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { GalleryImagesComponent } from './components/gallery-images/gallery-images.component';
+import { LayoutComponent } from './components/layout-area/layout/layout.component';
+import { HeaderComponent } from './components/layout-area/header/header.component';
+import { FooterComponent } from './components/layout-area/footer/footer.component';
+import { MenuComponent } from './components/layout-area/menu/menu.component';
+import { HomeComponent } from './components/layout-area/home/home.component';
+import { SearchComponentComponent } from './components/layout-area/search-component/search-component.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +20,13 @@ import { GalleryImagesComponent } from './components/gallery-images/gallery-imag
     SearchComponent,
     ResultComponent,
     GalleryComponent,
-    GalleryImagesComponent
+    GalleryImagesComponent,
+    LayoutComponent,
+    HeaderComponent,
+    FooterComponent,
+    MenuComponent,
+    HomeComponent,
+    SearchComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +36,7 @@ import { GalleryImagesComponent } from './components/gallery-images/gallery-imag
     //
   ],
   bootstrap: [
-    AppComponent
+    LayoutComponent
   ]
 })
 export class AppModule { }
