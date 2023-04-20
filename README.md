@@ -211,18 +211,6 @@ Change the href-links to routerLink:
 
 *In case the package was not pre-installed, don't forget to import it into your main app.module.ts.
 
-# Some TypeScript Notes:
-
-If we define a class property like that:
-
-    public text: string;
-
-We'll get TypeScript error. Solution is simple - initialize the property right away:
-
-    public text: string = "";
-
-OR: go to tsconfig.json file and change strictNullChecks: false (you can find it in CompilerOptions).
-
 # Template Reference Variable
 
 A Template Reference Variable is a variable declared on an HTML element in an Angular template that can be referenced in the component code. It is a way to get access to an HTML element or directive instance from within the component class.
@@ -261,6 +249,48 @@ The value of my location will be accessible after initializing it:
         alert(myLocation.value);
 ```
 
+# Dependency Injection - DI
+
+Dependency injection is a design pattern used in software engineering. The basic idea is to separate the creation and management of object dependencies from the code that uses them, by having an external entity provide the necessary dependencies to a component or module. Example:
+
+      public constructor(title: Title){
+        title.setTitle("Northwind Home");
+      }
+
+Here, we told Angular to use a built-in service used to get and set current HTML-title: the framework creates an object of a class that we need inside the class that we work with, so we can access its properties/methods.
+
+# Getting Data from a Server
+
+We create utils, models, services folders just as we do in React. The main difference is instead of using 'export default' we use just 'export' statement'*.
+
+To get data from a server first we need to import HttpClientModule into our app.modules.ts and manually add:
+
+    import { HttpClientModule } from '@angular/common/http';
+
+Then in services we create a DI (and use some object assignment) so that we can access the HttpClientModule:
+
+     public constructor(private http: HttpClient){}
+
+How to get the response's value? By using Observables. In simple terms, an Observable is a stream of data that can be observed by other parts of the code, and can emit values over time. It can be used to represent asynchronous operations such as network requests, user input, and other events. Observables are built-in in Angular as a part of RxJS (Reactive Extensions for JavaScript) Library. They are similar to Promises in a way that both of them handle asynchronous code, yet their main difference is that Promises can only bring one single value (there is always one Resolve), while Observables can emit multiple values over time.
+
+      const observale = this.http.get<ProductModel[]>(appConfig.productsURL);
+
+Then we transfrom the Observable to Promise so we can use await/async properly (note: await-async can be applied only on Primises):
+
+      observable.toPromise();
+
+OR use:
+
+      firstValueFrom(observable) // lastValueFrom(observable)
+
+We do not need to export services. Instead, we access it by using Dependency Injection within a class where we need the data:
+
+      constructor(public productService: ProductService){}
+
+
+
+*'export' statement is used to export functions, objects, or values from a module to be used in other modules. It allows you to export multiple named values from a module; 'export default' is used to export a single value, object, or function from a module. You can only use it to export one default value per module.
+
 # Extra Notes on Angular
 
 1. Angular Change Detection - how Angular works with states behind the scene?
@@ -276,4 +306,16 @@ There are two types of change detection strategies in Angular:
 - OnPush Change Detection Strategy: It is a performance optimization technique that reduces the number of change detection cycles by only triggering change detection when there is a change in the @Input() properties of the component or when an event is fired.
 
 In summary, the Angular Change Detection system is responsible for keeping the view in sync with the component's data. It is an essential part of Angular's architecture that enables developers to build dynamic and reactive user interfaces.
+
+# Some TypeScript Notes:
+
+If we define a class property like that:
+
+    public text: string;
+
+We'll get TypeScript error. Solution is simple - initialize the property right away:
+
+    public text: string = "";
+
+OR: go to tsconfig.json file and change strictNullChecks: false (you can find it in CompilerOptions).
 

@@ -18,6 +18,8 @@ import { SpecialsComponent } from './components/products-area/specials/specials.
 import { ProductsListComponent } from './components/products-area/products-list/products-list.component';
 import { AboutComponent } from './components/about-area/about/about.component';
 import { LocationComponent } from './components/home-area/location/location.component';
+import { ProductDetailsComponent } from './components/products-area/product-details/product-details.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -35,12 +37,14 @@ import { LocationComponent } from './components/home-area/location/location.comp
     SpecialsComponent,
     ProductsListComponent,
     AboutComponent,
-    LocationComponent
+    LocationComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     //
