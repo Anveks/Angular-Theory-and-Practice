@@ -228,7 +228,7 @@ To declare a Template Reference Variable, you can use the hash symbol (#) follow
     </select>
 ```
 
-In this case # won't be a sign of an id (overall it is a bad practice to give id's in Angular), but an object of Reference Type - [object HTMLSelectElement]. It's value can be used both inside the HTML and by a class.
+In this case # won't be a sign of an id <sub>(overall it is a bad practice to give id's in Angular)</sub>, but an object of Reference Type - [object HTMLSelectElement]. It's value can be used both inside the HTML and by a class.
 
 NB: Template Reference Variable is a shorter alretnative to two-way binding.
 
@@ -267,15 +267,15 @@ To get data from a server first we need to import HttpClientModule into our app.
 
     import { HttpClientModule } from '@angular/common/http';
 
-Then in services we create a DI (and use some object assignment) so that we can access the HttpClientModule:
+Then in services we create a DI <sub>(and use some object assignment)</sub> so that we can access the HttpClientModule:
 
      public constructor(private http: HttpClient){}
 
-How to get the response's value? By using Observables. In simple terms, an Observable is a stream of data that can be observed by other parts of the code, and can emit values over time. It can be used to represent asynchronous operations such as network requests, user input, and other events. Observables are built-in in Angular as a part of RxJS (Reactive Extensions for JavaScript) Library. They are similar to Promises in a way that both of them handle asynchronous code, yet their main difference is that Promises can only bring one single value (there is always one Resolve), while Observables can emit multiple values over time.
+How to get the response's value? By using Observables. In simple terms, an Observable is a stream of data that can be observed by other parts of the code, and can emit values over time. It can be used to represent asynchronous operations such as network requests, user input, and other events. Observables are built-in in Angular as a part of RxJS <sub>(Reactive Extensions for JavaScript)</sub> Library. They are similar to Promises in a way that both of them handle asynchronous code, yet their main difference is that Promises can only bring one single value <sub>(there is always one Resolve)</sub>, while Observables can emit multiple values over time.
 
       const observale = this.http.get<ProductModel[]>(appConfig.productsURL);
 
-Then we transfrom the Observable to Promise so we can use await/async properly (note: await-async can be applied only on Primises):
+Then we transfrom the Observable to Promise so we can use await/async properly <sub>(note: await-async can be applied only on Primises)</sub>:
 
       observable.toPromise();
 
@@ -287,7 +287,36 @@ We do not need to export services. Instead, we access it by using Dependency Inj
 
       constructor(public productService: ProductService){}
 
+NB: to ensure DI will work properly, make sure you added @Injectable() annotation before ProductService class!
 
+    @Injectable({
+      providedIn: "root" // tells Angular that this class is accessible in the whole app's scope
+    })
+
+To use productService and get the data we need a lifecycle hook ngOnInit <sub>(the same as useEffect() in React)</sub>. It is automatically provided by the interface "OnInit":  
+
+    export class ProductsListComponent implements OnInit {
+
+      public products: ProductModel[];
+      constructor(public productService: ProductService){}
+      public async ngOnInit() {
+        try {
+          this.products = await this.productService.getAllProducts();
+        } catch(err: any){
+          console.log(err.message);
+        }
+      }
+
+    }
+
+Finally, display the data in the HTML by using *ngFor directive and transfering the products as props to a CardComponent:
+
+      <app-product-card *ngFor="let p of products" [product]="p"></app-product-card>
+
+NB: ProductCard should also have an @Input annotation so it can receive 'props':
+
+      @Input()
+      public product: ProductModel;
 
 *'export' statement is used to export functions, objects, or values from a module to be used in other modules. It allows you to export multiple named values from a module; 'export default' is used to export a single value, object, or function from a module. You can only use it to export one default value per module.
 

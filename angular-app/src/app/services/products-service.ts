@@ -4,7 +4,9 @@ import { ProductModel } from "../models/products-model";
 import { appConfig } from "../utils/app-config";
 import { Injectable } from "@angular/core";
 
-@Injectable()
+@Injectable({
+  providedIn: "root"
+})
 export class ProductService {
 
   public constructor(private http: HttpClient){}

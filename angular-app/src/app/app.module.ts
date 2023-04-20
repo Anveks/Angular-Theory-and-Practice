@@ -20,6 +20,7 @@ import { AboutComponent } from './components/about-area/about/about.component';
 import { LocationComponent } from './components/home-area/location/location.component';
 import { ProductDetailsComponent } from './components/products-area/product-details/product-details.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductCardComponent } from './components/products-area/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProductsListComponent,
     AboutComponent,
     LocationComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
