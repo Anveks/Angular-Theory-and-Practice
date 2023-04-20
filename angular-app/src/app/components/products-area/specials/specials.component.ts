@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./specials.component.css']
 })
 export class SpecialsComponent {
+
+  public price: number = 50;
+
   public style = {
     color: Math.random() < 0.5 ? "red" : "green"
   };

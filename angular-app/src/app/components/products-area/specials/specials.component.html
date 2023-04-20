@@ -2,4 +2,6 @@
   <span [ngStyle]="style">Our specials: </span>
   <span>Pizza, Pasta</span>
   <span *ngIf="isWeekend()"> It's weekend now! We have beer.</span>
+  <br/> <br/>
+  <span>Celebrating your Birthday? Get a cake only for {{price | currency: 'ILS'}}</span>
 </div>

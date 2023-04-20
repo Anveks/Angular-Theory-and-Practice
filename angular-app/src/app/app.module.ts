@@ -15,6 +15,9 @@ import { HomeComponent } from './components/layout-area/home/home.component';
 import { SearchComponentComponent } from './components/layout-area/search-component/search-component.component';
 import { FormsModule } from '@angular/forms';
 import { SpecialsComponent } from './components/products-area/specials/specials.component';
+import { ProductsListComponent } from './components/products-area/products-list/products-list.component';
+import { AboutComponent } from './components/about-area/about/about.component';
+import { LocationComponent } from './components/home-area/location/location.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { SpecialsComponent } from './components/products-area/specials/specials.
     MenuComponent,
     HomeComponent,
     SearchComponentComponent,
-    SpecialsComponent
+    SpecialsComponent,
+    ProductsListComponent,
+    AboutComponent,
+    LocationComponent
   ],
   imports: [
     BrowserModule,

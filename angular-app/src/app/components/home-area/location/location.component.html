@@ -1,0 +1,11 @@
+<label>location: </label>
+
+<select #myLocation (change)="display(myLocation)">
+  <option>North</option>
+  <option>South</option>
+  <option>East</option>
+  <option>West</option>
+</select>
+
+<span>my location: {{myLocation.value}}</span>
+<button (click)="show()">Show Location</button>

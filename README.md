@@ -1,6 +1,6 @@
 # Angular
 
-Angular is a TypeScript-based framework for developing dynamic, single-page web applications. Originally made by Microsoft programmers, Angular 1.0 was launched in 2010. Back then it was based on MVC design-pattern and used CDN as package manager. Some years later it was updated to Angular 2.0 and introduced component-based approach along with NPM.
+Angular is a TypeScript-based framework for developing dynamic, single-page web applications. Originally made by Google, Angular 1.0 was launched in 2010. Back then it was based on MVC design-pattern and used CDN as package manager. Some years later it was updated to Angular 2.0 and introduced component-based approach along with NPM.
 
 # Installing Angular
 
@@ -171,6 +171,46 @@ The EventEmitter class provides two main functionalities:
 1. Registering event listeners: Developers can use the on() method to register a listener for a particular event. Whenever the event is emitted, the registered listener function will be called.
 2. Emitting events: Developers can use the emit() method to emit an event. This will trigger all the registered listeners for that event to be called.
 
+# Pipes
+
+In Angular, pipes are a feature that allows you to transform data in your template before displaying it to the user. Pipes are a type of Angular directive that takes data as input and transforms it to a desired output. Pipes are used to format data, convert it to a different type, or filter it based on certain criteria.
+
+Pipes are used by placing the | symbol followed by the pipe name in the template expression.
+
+```
+    <span>Celebrating your Birthday? Get a cake only for {{price | currency: 'ILS'}}</span>
+```
+Angular provides several built-in pipes, including:
+
+- DatePipe: Formats a date value according to a specified  format.
+- UpperCasePipe and LowerCasePipe: Converts a string to upper or lower case.
+- CurrencyPipe: Formats a number as a currency value.
+- DecimalPipe: Formats a number as a decimal value.
+- PercentPipe: Formats a number as a percentage value.
+- JsonPipe: Converts an object to a JSON string.
+
+# Routing
+
+In case you didn't install angular routing package along with your project, open the terminal and type:
+
+    npm install @angular/router --save
+
+Then you'll get app-routing.module.ts - this will be the main routing file*. Open it, then add a path and a component into the routes:
+
+```
+    const routes: Routes = [
+  { path: "home", component: HomeComponent }
+];
+```
+Then, add the <router-outlet> element where you want to display the routed component. For example, inside the "main" tag.
+
+Change the href-links to routerLink:
+
+      <a routerLink="/home">Home</a>
+
+
+*In case the package was not pre-installed, don't forget to import it into your main app.module.ts.
+
 # Some TypeScript Notes:
 
 If we define a class property like that:
@@ -182,3 +222,58 @@ We'll get TypeScript error. Solution is simple - initialize the property right a
     public text: string = "";
 
 OR: go to tsconfig.json file and change strictNullChecks: false (you can find it in CompilerOptions).
+
+# Template Reference Variable
+
+A Template Reference Variable is a variable declared on an HTML element in an Angular template that can be referenced in the component code. It is a way to get access to an HTML element or directive instance from within the component class.
+
+- First approach:
+
+To declare a Template Reference Variable, you can use the hash symbol (#) followed by a name on any HTML element or directive in the template. For example:
+
+```
+    <select #myLocation (change)="display(myLocation)">
+      <option>North</option>
+      <option>South</option>
+      <option>East</option>
+      <option>West</option>
+    </select>
+```
+
+In this case # won't be a sign of an id (overall it is a bad practice to give id's in Angular), but an object of Reference Type - [object HTMLSelectElement]. It's value can be used both inside the HTML and by a class.
+
+NB: Template Reference Variable is a shorter alretnative to two-way binding.
+
+- Another approach:
+
+Another way to get a reference is by using annotations inside of a class: 
+
+```
+      @ViewChild("myLocation")
+      public myLocationRef: ElementRef<HTMLSelectElement>;
+```
+@ViewChild is an annotation that will look for "myLocation" element throughout the HTML code and then put it inside myLocationRef. Note: annotations always affect the first line of code after them.
+
+The value of my location will be accessible after initializing it:
+
+```
+        const myLocation = this.myLocationRef.nativeElement;
+        alert(myLocation.value);
+```
+
+# Extra Notes on Angular
+
+1. Angular Change Detection - how Angular works with states behind the scene?
+
+Angular Change Detection is a process that updates the view of an Angular application whenever there is a change in the data. In other words, it is a mechanism that tracks changes to the application data and updates the view accordingly.
+
+Angular uses a unidirectional data flow architecture where data flows from the component class to the template. Whenever there is a change in the component's data, the change detection system updates the view to reflect the latest data.
+
+There are two types of change detection strategies in Angular:
+
+- Default Change Detection Strategy: It is based on the zone.js library and triggers the change detection whenever an event occurs, such as a user clicking a button or entering text in a form field.
+
+- OnPush Change Detection Strategy: It is a performance optimization technique that reduces the number of change detection cycles by only triggering change detection when there is a change in the @Input() properties of the component or when an event is fired.
+
+In summary, the Angular Change Detection system is responsible for keeping the view in sync with the component's data. It is an essential part of Angular's architecture that enables developers to build dynamic and reactive user interfaces.
+
